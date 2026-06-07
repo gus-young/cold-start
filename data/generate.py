@@ -1,7 +1,7 @@
 import random
 import csv
 
-#generae runs.csv
+## -- Generae runs.csv -- ##
 count = 101
 n = range(count)
 
@@ -48,7 +48,7 @@ for i in n:
     )
     data_entries.append(entry)
 
-## Create CSV ##
+## -- Create CSV -- ##
 fieldnames = [
     "run_id",
     "model_type", 
@@ -71,3 +71,42 @@ with open('output/runs.csv', mode='w', newline='', encoding='utf-8') as csv_file
     
     # 2. Write rows (accepts an iterable of dictionaries)
     writer.writerows(data_entries)
+
+## -- Generate model_registry.csv -- ##
+
+model_registry = []
+
+registry_fieldnames = [
+    "model_type",
+    "team_owner",
+    "is_approved",
+    "notes"
+]
+
+teams = [
+    "ml-platform",
+    "search-relevance",
+    "recommendations",
+    "risk-and-trust"
+]
+
+for model in model_type:
+    entry = dict(
+        model_type = model,
+        team_owner = random.choice(teams),
+        is_approved = True if model == "xgboost" or model == "random_forest" else False,
+        notes = f"Notes about {model}"
+    )
+    model_registry.append(entry)
+
+## -- create csv --
+
+with open('output/model_registry.csv', mode='w', newline='', encoding='utf-8') as csv_file:
+    # Initialize the DictWriter
+    writer = csv.DictWriter(csv_file, fieldnames=registry_fieldnames)
+    
+    # 1. Write the header row
+    writer.writeheader()
+    
+    # 2. Write rows (accepts an iterable of dictionaries)
+    writer.writerows(model_registry)
