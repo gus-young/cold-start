@@ -1,3 +1,4 @@
 pandas_project_guide.md
 output/
 .vscode
+__pycache__
