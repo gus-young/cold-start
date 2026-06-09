@@ -4,5 +4,4 @@ from analysis.cleaner import filter_completed
 
 data = load_data()
 df = data[0]
-print(df.info())
 print(filter_completed(df))
