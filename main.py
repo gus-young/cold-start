@@ -1,7 +1,7 @@
 import pandas as pd
 from analysis.loader import load_data
-from analysis.cleaner import filter_completed
+from analysis.cleaner import clean, normalize_model_type
 
-data = load_data()
-df = data[0]
-print(filter_completed(df))
+runs_df, registry_df = load_data()
+runs_df = clean(runs_df)
+print(f"Clean dataset: {len(runs_df)} runs")
