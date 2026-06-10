@@ -9,3 +9,8 @@ def accuracy_by_model(df):
 def accuracy_stats(df):
     model_stats = df.groupby('model_type')['val_accuracy'].agg(['std', 'min', 'max', 'count'])
     return model_stats
+
+def accuracy_by_model_and_dataset(df):
+    model_and_dataset = df.groupby(['model_type', 'dataset'])['val_accuracy'].mean()
+    model_and_dataset_df = model_and_dataset.unstack()
+    return model_and_dataset_df
