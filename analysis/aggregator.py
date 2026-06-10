@@ -20,3 +20,7 @@ def accuracy_by_model_and_dataset(df):
 def overfit_rate_by_model(df):
     overfit_pct = df['is_overfit'].mean()
     return overfit_pct
+
+def speed_by_model(df):
+    speeds = df.groupby('model_type')['train_time_seconds'].agg(['mean', 'median']).sort_values(by = 'mean', ascending = True)
+    return speeds
