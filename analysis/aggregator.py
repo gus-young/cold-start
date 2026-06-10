@@ -1,10 +1,4 @@
-import math 
-
-def accuracy_by_model(df):
-    #df.groupby - groups by values in column 
-    # .mean() calculates mean of "val_accuracy" values in the grous
-    # .sort_values(ascending = False) sorts the values descending
-    
+def accuracy_by_model(df):    
     model_means = df.groupby("model_type")["val_accuracy"].mean().sort_values(ascending = False)
     return model_means
 
