@@ -1,3 +1,5 @@
+import math 
+
 def accuracy_by_model(df):
     #df.groupby - groups by values in column 
     # .mean() calculates mean of "val_accuracy" values in the grous
@@ -14,3 +16,7 @@ def accuracy_by_model_and_dataset(df):
     model_and_dataset = df.groupby(['model_type', 'dataset'])['val_accuracy'].mean()
     model_and_dataset_df = model_and_dataset.unstack()
     return model_and_dataset_df
+
+def overfit_rate_by_model(df):
+    overfit_pct = df['is_overfit'].mean()
+    return overfit_pct
