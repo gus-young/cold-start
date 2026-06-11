@@ -14,4 +14,16 @@ def merge_with_registry(runs_df, registry_df):
     only_true = df[df["is_approved"] == True]
     only_false = df[df["is_approved"] == False]
     counts = len(only_true), len(only_false)
-    return counts
+    return df
+
+def classify_accuracy(val_acc):
+    if val_acc >= 0.90: 
+        return "high"
+    elif val_acc >= 0.75: 
+        return "medium"
+    else: 
+        return "low"
+
+def run_number_extract(run_id):
+    run_number = run_id.str.extract(r"(\d+)")
+    return run_number
