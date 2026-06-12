@@ -11,9 +11,6 @@ def best_run_per_model(df):
 
 def merge_with_registry(runs_df, registry_df):
     df = pd.merge(runs_df, registry_df, on="model_type", how="left")
-    only_true = df[df["is_approved"] == True]
-    only_false = df[df["is_approved"] == False]
-    counts = len(only_true), len(only_false)
     return df
 
 def classify_accuracy(val_acc):

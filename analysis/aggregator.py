@@ -12,7 +12,7 @@ def accuracy_by_model_and_dataset(df):
     return model_and_dataset_df
 
 def overfit_rate_by_model(df):
-    overfit_pct = df['is_overfit'].mean()
+    overfit_pct = df.groupby(['model_type'])['is_overfit'].mean()
     return overfit_pct
 
 def speed_by_model(df):
